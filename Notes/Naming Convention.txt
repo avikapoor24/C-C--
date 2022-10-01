@@ -1,0 +1,5 @@
+There are 4 types:
+1. Snake Case [file_size]
+2. Pascal Case [FileSize]
+3. Hungarian Case [iFileSize]  {note, here i is standing for int type variable}
+4. Camel Case [fileSize]
