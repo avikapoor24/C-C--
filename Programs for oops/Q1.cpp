@@ -1,61 +1,58 @@
-//Q.4] WAP in cpp to multiply 2 matrices a and b are of size [mxn] and [pxq] . 
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
-
-// Edit MACROs here, according to your Matrix Dimensions for
-// mat1[R1][C1] and mat2[R2][C2]
-#define R1 2 // number of rows in Matrix-1
-#define C1 2 // number of columns in Matrix-1
-#define R2 2 // number of rows in Matrix-2
-#define C2 2 // number of columns in Matrix-2
-
-void mulMat(int mat1[][C1], int mat2[][C2])
-{
-	int rslt[R1][C2];
-
-	printf("Multiplication of given two matrices is:\n");
-
-	for (int i = 0; i < R1; i++) {
-		for (int j = 0; j < C2; j++) {
-			rslt[i][j] = 0;
-
-			for (int k = 0; k < R2; k++) {
-				rslt[i][j] += mat1[i][k] * mat2[k][j];
-			}
-
-			printf("%d\t", rslt[i][j]);
-		}
-
-		printf("\n");
-	}
+class Matrix{
+    int i, j, k,m,n,p,q;
+    int a[10][10];
+    int b[10][10];
+    int c[10][10];
+    public:
+    Matrix(int n1,int n2,int n3,int n4){
+        m=n1;
+        n=n2;
+        p=n3;
+                                                                                                                                                             
+        q=n4;  }
+    void Mult();
+    void InputMatrix();
+    void OutputMatrix();
+};
+void Matrix::InputMatrix(){
+    if(n!=p){
+        cout<<"Matrix can not be multiplied with these order of matrix"<<endl;  }
+    else{
+        cout << "\nEnter the values for the first matrix" << endl;
+        for (i = 0; i < m; i++){
+            for (j = 0; j < n; j++){
+                cin >> a[i][j];  }  }
+        cout << "\nEnter the values for the second matrix" << endl;
+        for (i = 0; i < p; i++){
+            for (j = 0; j < q; j++){
+                cin >> b[i][j];
+           } } } }
+void Matrix::Mult(){
+    for (i = 0; i < m; i++){
+        for (j = 0; j < q; j++){
+            c[i][j] = 0;
+            for (k = 0; k < n; k++){
+                c[i][j] += a[i][k] * b[k][j];
+        } } } }
+void Matrix::OutputMatrix(){
+    cout << "\nThe Resultant Matrix is: \n";
+    for (i = 0; i < m; i++){
+        for (j = 0; j < q; j++){
+            cout << c[i][j] << " ";  }
+        cout << endl;
+    }  }
+int main(){
+    cout << "08113202721 , GAGANDEEP KAUR , CSE-2(A)";
+    int n1,n2,n3,n4;
+    cout<<"\n\nEnter the size of matrix 1: ";
+    cin>>n1>>n2;
+    cout<<"Enter the size of matrix 2: ";
+    cin>>n3>>n4;
+    Matrix x(n1,n2,n3,n4);
+    x.InputMatrix();
+    x.Mult();
+    x.OutputMatrix();
+    return 0;
 }
-
-// Driver code
-int main()
-{
-	// R1 = 4, C1 = 4 and R2 = 4, C2 = 4 (Update these
-	// values in MACROs)
-	int mat1[R1][C1] = { { 1, 1 },
-						{ 2, 2 } };
-
-	int mat2[R2][C2] = { { 1, 1 },
-						{ 2, 2 } };
-
-
-	if (C1 != R2) {
-		printf("The number of columns in Matrix-1 must be "
-			"equal to the number of rows in "
-			"Matrix-2\n");
-		printf("Please update MACROs value according to "
-			"your array dimension in "
-			"#define section\n");
-
-		exit(EXIT_FAILURE);
-	}
-
-	// Function call
-	mulMat(mat1, mat2);
-
-	return 0;
-}
-
